@@ -25,6 +25,8 @@ private:
 
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
 
+	bool GetLookDirection(const FVector2D& ScreenLocation, FVector & LookDirection) const;
+
 public:
 	UPROPERTY(EditAnywhere)
 	float CrosshairXLocation = 0.5;
