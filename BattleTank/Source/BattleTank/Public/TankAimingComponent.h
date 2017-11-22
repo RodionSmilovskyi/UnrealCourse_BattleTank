@@ -24,26 +24,21 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 
 protected:
 	// Called when the game starts
-	virtual void BeginPlay() override;
-
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringState FiringState = EFiringState::Aiming;
 
 public:	
+	void AimAt(FVector HitLocation, float LaunchSpeed);
+
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
+
+private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
-	
-	void SetBarrelReference(UTankBarrel* BarrelToSet);
-
-	void SetTurretReference(UTankTurret* TurretToSet);
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-	void AimAt(FVector HitLocation, float LaunchSpeed);
 
 	void MoveBarrelTowards(const FVector& AimDirection);
 
-private:
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 };
