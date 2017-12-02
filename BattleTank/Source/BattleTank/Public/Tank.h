@@ -17,6 +17,8 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 private:
+	virtual void BeginPlay() override;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
