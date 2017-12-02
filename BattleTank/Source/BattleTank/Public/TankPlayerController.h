@@ -6,7 +6,11 @@
 #include "TankPlayerController.generated.h" // must be the last include
 
 class ATank;
+class UTankAimingComponent;
 
+/**
+*	Responsible for helping player aim
+*/
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
@@ -29,6 +33,8 @@ protected:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	ATank* GetControlledTank() const;
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 public:
 	UPROPERTY(EditDefaultsOnly)
 	float CrosshairXLocation = 0.5;
