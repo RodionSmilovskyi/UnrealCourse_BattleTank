@@ -28,7 +28,7 @@ protected:
 	EFiringState FiringState = EFiringState::Aiming;
 
 public:	
-	void AimAt(FVector HitLocation, float LaunchSpeed);
+	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
@@ -36,6 +36,9 @@ public:
 private:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float LaunchSpeed = 4000; // 1000 m/s
 
 	void MoveBarrelTowards(const FVector& AimDirection);
 

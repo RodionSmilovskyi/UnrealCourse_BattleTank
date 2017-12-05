@@ -6,10 +6,7 @@
 #include "Tank.generated.h"
 
 class UTankBarrel;
-class UTankTurret;
 class AProjectile;
-class UTankMovementComponent;
-class UTankAimingComponent;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -25,26 +22,17 @@ private:
 	UTankBarrel* Barrel = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	float LaunchSpeed = 4000; // 1000 m/s
-
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing") // TODO:remove from here!
+	float LaunchSpeed = 4000; // 1000 m/s
 
 	double LastFireTime = 0;
 
 protected:
 	// Sets default values for this pawn's properties
 	ATank();
-
-	UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent* TankAimingComponent = nullptr;
-
-	UPROPERTY(BlueprintReadOnly)
-	UTankMovementComponent* TankMovementComponent = nullptr;
-
 public:
-	void AimAt(FVector HitLocation);
-
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
 };
