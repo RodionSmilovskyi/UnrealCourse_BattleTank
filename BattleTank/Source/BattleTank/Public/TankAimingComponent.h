@@ -47,6 +47,8 @@ private:
 
 	void MoveBarrelTowards(const FVector& AimDirection);
 
+	bool IsBarrelMoving();
+
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 4000; // 1000 m/s
 
@@ -61,4 +63,6 @@ private:
 	UTankBarrel* Barrel = nullptr;
 
 	UTankTurret* Turret = nullptr;
+
+	FVector AimDirection;
 };
